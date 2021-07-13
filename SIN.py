@@ -7,7 +7,7 @@ currentPos = np.zeros(nInst)
 def getMyPosition(prcSoFar):
     global currentPos
 
-    (nins,nt) = prcSoFar.shaper
+    (nins,nt) = prcSoFar.shape
     prcSoFar = pd.DataFrame(prcSoFar)
 
     short_ema = prcSoFar.ewm(span=5, adjust=False, axis=1).mean()
