@@ -9,7 +9,9 @@ def getMyPosition(prcSoFar):
     (nins,nt) = prcSoFar.shape
     prcSoFar = pd.DataFrame(prcSoFar)
     short_ema = prcSoFar.ewm(span=5, adjust=False, axis=1).mean()
+    # 5 day exponential moving average
     posSize = 2500
+    #base position size
     buy = posSize
     sell = -posSize
     buy_big = posSize*4
@@ -22,7 +24,7 @@ def getMyPosition(prcSoFar):
     stock_pnl = np.zeros(nInst)
     ev = np.zeros(nInst)
     
-    
+    #loop to filter for +ev instruments
     for n in range(days):
         r_pos = np.zeros(nInst)
         for m in range(100):
